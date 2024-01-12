@@ -63,6 +63,7 @@ export const GraphDefault = ({ order, probability }) => {
       nodeReducer: (node, data) => {
         const graph = sigma.getGraph();
         const newData = { ...data, highlighted: data.highlighted || false };
+        console.log(hoveredNode, "hovvveerrredddnoddee");
 
         if (hoveredNode) {
           if (

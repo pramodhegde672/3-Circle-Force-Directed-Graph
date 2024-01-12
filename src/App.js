@@ -3,6 +3,31 @@ import SigmaGraph from "./components/SigmaGraph";
 
 const App = () => {
   const generateCircularGraphData = (numNodes, radius) => {
+    const businessProviders = [
+      "Makemytrip",
+      "Booking.com",
+      "Ola",
+      "Uber",
+      "Nimma Yatri",
+      "Bhima Jewellers",
+    ];
+
+    const products = ["Hotel", "Jewellery Shop", "Cab Services"];
+
+    const vendors = [
+      "Itsy By Treebo - Shree Comforts",
+      "Oval Diamond Earrings in 18KT Rose Gold",
+      "Bangalore Luxury Cars | Wedding Cars at Bangalore",
+      "Ibis Bengaluru City Centre - An Accor Brand",
+      "Gold & Diamonds opens seventh store",
+      "Bloom Hotel - HSR Layout Sector 6",
+      "Zing Car, Self Drive Car at HSR Layout",
+      "Embrace natural beauty with Golden Ardor Couple Rings",
+      "Bangalore Luxury Cars | Wedding Cars at Bangalore",
+      "GRAND Kalinaga Hotel",
+      "Twin Tulips Mystic Premier",
+    ];
+
     const graphData = {
       nodes: [],
       edges: [],
@@ -20,13 +45,13 @@ const App = () => {
     for (let i = 0; i < numNodes; i++) {
       // Inner circle
       const angleInner = (i / numNodes) * 2 * Math.PI;
-      const xInner = (radius + 100) * Math.cos(angleInner);
-      const yInner = (radius + 100) * Math.sin(angleInner);
+      const xInner = (radius + 150) * Math.cos(angleInner);
+      const yInner = (radius + 150) * Math.sin(angleInner);
 
       const innerNodeId = `n${i}_inner`;
       graphData.nodes.push({
         id: innerNodeId,
-        label: `Node ${i}`,
+        label: businessProviders[i % businessProviders.length], // Use business provider names cyclically
         x: xInner,
         y: yInner,
         size: 1,
@@ -55,17 +80,17 @@ const App = () => {
 
       // Middle circle
       const angleMiddle = (i / numNodes) * 2 * Math.PI;
-      const xMiddle = (radius + 300) * Math.cos(angleMiddle); // Adjust the radius for the outer circle
-      const yMiddle = (radius + 300) * Math.sin(angleMiddle);
+      const xMiddle = (radius + 400) * Math.cos(angleMiddle); // Adjust the radius for the outer circle
+      const yMiddle = (radius + 400) * Math.sin(angleMiddle);
 
       const middleNodeId = `n${i}_middle`;
       graphData.nodes.push({
         id: middleNodeId,
-        label: `Node ${i}`,
+        label: products[i % products.length], // Use product names cyclically
         x: xMiddle,
         y: yMiddle,
-        size: 2,
-        color: "red", // Change color for outer circle nodes
+        size: 1.5,
+        color: "#B228F2",
       });
 
       if (i < numNodes - 1) {
@@ -90,17 +115,17 @@ const App = () => {
 
       // Outer circle
       const angleOuter = (i / numNodes) * 2 * Math.PI;
-      const xOuter = (radius + 500) * Math.cos(angleOuter); // Adjust the radius for the outer circle
-      const yOuter = (radius + 500) * Math.sin(angleOuter);
+      const xOuter = (radius + 800) * Math.cos(angleOuter); // Adjust the radius for the outer circle
+      const yOuter = (radius + 800) * Math.sin(angleOuter);
 
       const outerNodeId = `n${i}_outer`;
       graphData.nodes.push({
         id: outerNodeId,
-        label: `Node ${i}`,
+        label: vendors[i % vendors.length], // Use vendor names cyclically
         x: xOuter,
         y: yOuter,
         size: 2,
-        color: "blue", // Change color for outer circle nodes
+        color: "#005FFE",
       });
 
       if (i < numNodes - 1) {

@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "@react-sigma/core/lib/react-sigma.min.css";
 import { MultiDirectedGraph } from "graphology";
-import { SigmaContainer, useRegisterEvents, useSigma } from "@react-sigma/core";
+import {
+  SigmaContainer,
+  useRegisterEvents,
+  useSigma,
+  ControlsContainer,
+} from "@react-sigma/core";
 import _ from "lodash";
+import { LayoutForceAtlas2Control } from "@react-sigma/layout-forceatlas2";
+import { GraphDefault } from "./GraphDefault";
 
 const SigmaGraph = ({ graphData }) => {
   const GraphEvents = () => {
@@ -101,7 +108,14 @@ const SigmaGraph = ({ graphData }) => {
         order={100}
         probability={0.1}
       >
+        {/* <GraphDefault order={100} probability={0.1} /> */}
         <GraphEvents />
+
+        <ControlsContainer position={"bottom-right"}>
+          {/* <ZoomControl /> */}
+          {/* <FullScreenControl /> */}
+          <LayoutForceAtlas2Control settings={{ settings: { slowDown: 10 } }} />
+        </ControlsContainer>
       </SigmaContainer>
     </>
   );
